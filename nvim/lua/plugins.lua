@@ -37,6 +37,7 @@ return require('packer').startup(function()
         require("bufferline").setup{}
         end, 
     } 
+
     -----------------------------------------------------------
     -- НАВИГАЦИЯ
     -----------------------------------------------------------
@@ -53,6 +54,7 @@ return require('packer').startup(function()
         config = function() require'telescope'.setup {} 
         end,
     }    
+    
     -----------------------------------------------------------
     -- РАЗНЫЕ
     -----------------------------------------------------------
@@ -62,4 +64,14 @@ return require('packer').startup(function()
         config = function() require('Comment').setup() 
         end
     } -- Комментирует по gc
+    use 'powerman/vim-plugin-ruscmd' -- Русская раскладка
+
+    -----------------------------------------------------------
+    -- PYTHON
+    -----------------------------------------------------------
+    --- Шапка с импортами приводим в порядок
+    -- use 'fisadev/vim-isort'
+    -- Поддержка темплейтом jinja2
+    -- use 'mitsuhiko/vim-jinja'
+
 end)

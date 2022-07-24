@@ -2,25 +2,21 @@ local cmd = vim.cmd
 local opt = vim.opt
 local g = vim.g
 
-
 g.mapleader = ','
+vim.o.scrolloff = 10
+cmd'colorscheme onedark'
 
-opt.colorcolumn = '80'
+opt.colorcolumn = '79'
 opt.cursorline = true
 opt.number = true
 opt.splitright = true
 opt.splitbelow = true
 opt.mouse = 'a'
-
-
 opt.termguicolors = true
-cmd'colorscheme onedark'
-
 opt.expandtab = true
 opt.shiftwidth = 4
 opt.tabstop = 4
 opt.smartindent = true
-
 
 -----------------------------------------------------------
 -- Установки для плагинов
@@ -34,9 +30,8 @@ lsp_installer.on_server_ready(function(server)
             vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
             vim.keymap.set('n', 'gD', vim.lsp.buf.definition, {buffer = 0})
             vim.keymap.set('n', 'gr', vim.lsp.buf.references, {buffer = 0})
-            vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, opts)
             vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, {buffer = 0})
-            vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+            vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {buffer = 0})
         end,
     }
     server:setup(opts)
@@ -56,9 +51,8 @@ cmp.setup {
             luasnip.lsp_expand(args.body)
         end,
     },
-    -- Шорткаты не работают
     mapping = {
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
   },
     ['<C-n>'] = cmp.mapping({
     c = function()
