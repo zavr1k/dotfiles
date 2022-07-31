@@ -38,15 +38,45 @@ cmp.setup{
       require('luasnip').lsp_expand(args.body)
     end,
   },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-    { name = 'path' },
-    { name = 'buffer', option = {
-      get_bufnrs = function()
-        return vim.api.nvim_list_bufs()
+  sorting = {
+    comparators = {
+      cmp.config.compare.offset,
+      cmp.config.compare.score,
+      cmp.config.compare.length,
+      cmp.config.compare.exact,
+      cmp.config.compare.kind,
+      cmp.config.compare.order,
+      cmp.config.compare.sort_text,
+    }
+  },
+  mapping = {
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+      else
+        fallback()
       end
-      },
+    end, {"i","s","c",}),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+      else
+        fallback()
+      end
+    end, {"i","s","c",}),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    -- ['<C-Space>'] = cmp.mapping.complete(),
+  },
+  sources = {
+    { name = 'luasnip' },
+    { name = 'nvim_lsp' },
+    { name = 'buffer',
+    { name = 'path' },
+      -- option = {
+      -- get_bufnrs = function()
+      --   return vim.api.nvim_list_bufs()
+      -- end
+      -- },
     },
   },
 }

@@ -12,3 +12,6 @@ nvim-install:
 
 cp-nvim-config:
 	cp -rf ./nvim/ ~/.config/
+cp-tmux-config:
+	cp -f ./tmux/tmux.conf ~/.tmux.conf
+
