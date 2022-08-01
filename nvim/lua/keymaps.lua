@@ -3,7 +3,6 @@ local default_opts = {noremap = true, silent = true}
 
 vim.keymap.set('n', '<leader>df', vim.diagnostic.goto_next, {buffer = 0})
 
-
  -- Переключение буфферов
 map('n', '<leader>q', ':bdelete!<CR>', default_opts) -- Закрыть буффер
 map('n', '<Space>', ':nohl<CR>', default_opts) -- Убарть подсветку поиска

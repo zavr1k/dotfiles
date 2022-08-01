@@ -56,16 +56,15 @@ cmp.setup{
       else
         fallback()
       end
-    end, {"i","s","c",}),
+    end, {"i"}),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
           cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
       else
         fallback()
       end
-    end, {"i","s","c",}),
+    end, {"i"}),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    -- ['<C-Space>'] = cmp.mapping.complete(),
   },
   sources = {
     { name = 'luasnip' },

@@ -8,16 +8,13 @@ end
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
-  
+
   use 'joshdick/onedark.vim' -- Цветовая схема
 
   -- набор Lua функций, используется как зависимость в большинстве
   -- плагинов, где есть работа с асинхронщиной
   use 'nvim-lua/plenary.nvim'
-
-  -- Конфиги для lsp
-  use 'neovim/nvim-lspconfig'
-
+  use 'neovim/nvim-lspconfig' -- Конфиги для lsp
   -- Установка lsp серверов
   use {
     'williamboman/nvim-lsp-installer',
@@ -25,24 +22,20 @@ return require('packer').startup(function(use)
       require('plugins.lsp-installer')
     end
   }
-
-  -- движок автодополнения для LSP
+  -- автодополнения
   use 'hrsh7th/nvim-cmp'
-  -- зависимости для движка автодополнения
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'saadparwaiz1/cmp_luasnip' -- автодополнения для сниппетов
-  
   -- Парссер ЯП для подсветки синтаксиса
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     config = function()
-      require('plugins.treesitter') 
+      require('plugins.treesitter')
     end
   }
-
   -- движок сниппетов
   use {
     'L3MON4D3/LuaSnip',
@@ -53,32 +46,26 @@ return require('packer').startup(function(use)
       })
     end
   }
-
-  -- набор готовых сниппетов для всех языков, включая go
-  use 'rafamadriz/friendly-snippets'
-
+  use 'rafamadriz/friendly-snippets' -- гтовые сниппеты
   use {
     'nvim-telescope/telescope.nvim',
     config = function()
       require('plugins.telescope')
     end
   }
-
   -- Файловый менеджер
   use { 'kyazdani42/nvim-tree.lua',
-    config = function() 
+    config = function()
         require('plugins.nvim-tree')
-    end 
-  }    
-  
+    end
+  }
   -- Строка с табами
   use {
-    'akinsho/bufferline.nvim', 
+    'akinsho/bufferline.nvim',
     config = function()
       require("plugins.bufferline")
-    end 
-  } 
-
+    end
+  }
   -- Icons
   use {
     'kyazdani42/nvim-web-devicons',
@@ -86,15 +73,13 @@ return require('packer').startup(function(use)
       require('nvim-web-devicons').setup({ default = true; })
     end
   }
-
   -- Информационная строка внизу
-  use { 
+  use {
     'nvim-lualine/lualine.nvim',
     config = function()
       require('lualine').setup()
     end
   }
-  
   -- плагин для простого комментирования кода
   use {
     'numToStr/Comment.nvim',
@@ -102,7 +87,6 @@ return require('packer').startup(function(use)
       require('Comment').setup()
     end
   }
-
   -- автоматические закрывающиеся скобки
   use {
     'windwp/nvim-autopairs',
@@ -110,21 +94,12 @@ return require('packer').startup(function(use)
       require("nvim-autopairs").setup()
     end
   }
-  -- Оборачивание в кавычки, скобки и тд...
-  use 'tpope/vim-surround' 
-  
-  -- Может повторять через . vimsurround
-  use 'tpope/vim-repeat' 
+  use 'tpope/vim-surround' -- Оборачивине в кавычки
+  use 'tpope/vim-repeat' -- может повторять оборачивание
+  use 'powerman/vim-plugin-ruscmd' -- Русская раскладка
+  -- use 'fisadev/vim-isort' -- Сортировка импортов в python
+  use 'mitsuhiko/vim-jinja' -- Поддержда jinja2
 
-  -- Русская раскладка
-  -- use 'powerman/vim-plugin-ruscmd' 
-
-  -- Шапка с импортами приводим в порядок
-  -- use 'fisadev/vim-isort'
-
-  -- Поддержка темплейтом jinja2
-   use 'mitsuhiko/vim-jinja'
-  
   if packer_bootstrap then
     require('packer').sync()
   end
