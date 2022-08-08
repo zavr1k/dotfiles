@@ -10,6 +10,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use 'joshdick/onedark.vim' -- Цветовая схема
+  use 'xiyaowong/nvim-transparent' -- Цветовая схема
 
   -- набор Lua функций, используется как зависимость в большинстве
   -- плагинов, где есть работа с асинхронщиной
