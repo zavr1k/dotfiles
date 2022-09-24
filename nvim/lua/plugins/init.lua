@@ -101,6 +101,10 @@ return require('packer').startup(function(use)
   -- use 'fisadev/vim-isort' -- Сортировка импортов в python
   use 'mitsuhiko/vim-jinja' -- Поддержда jinja2
 
+  use 'mitsuhiko/vim-jinja' -- Поддержда jinja2
+
+  use 'voldikss/vim-floaterm'
+
   if packer_bootstrap then
     require('packer').sync()
   end
