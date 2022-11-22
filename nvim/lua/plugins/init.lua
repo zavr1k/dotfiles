@@ -1,9 +1,10 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 -- Сниппет для скачивания packer
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+    install_path })
 end
 
 return require('packer').startup(function(use)
@@ -43,7 +44,7 @@ return require('packer').startup(function(use)
     after = 'friendly-snippets',
     config = function()
       require('luasnip/loaders/from_vscode').load({
-       paths = {'~/.local/share/nvim/site/pack/packer/start/friendly-snippets'}
+        paths = { '~/.local/share/nvim/site/pack/packer/start/friendly-snippets' }
       })
     end
   }
@@ -57,7 +58,7 @@ return require('packer').startup(function(use)
   -- Файловый менеджер
   use { 'kyazdani42/nvim-tree.lua',
     config = function()
-        require('plugins.nvim-tree')
+      require('plugins.nvim-tree')
     end
   }
   -- Строка с табами
@@ -101,12 +102,11 @@ return require('packer').startup(function(use)
   -- use 'fisadev/vim-isort' -- Сортировка импортов в python
   use 'mitsuhiko/vim-jinja' -- Поддержда jinja2
 
-  use 'mitsuhiko/vim-jinja' -- Поддержда jinja2
 
   use 'voldikss/vim-floaterm'
 
   if packer_bootstrap then
     require('packer').sync()
   end
-  end
+end
 )
