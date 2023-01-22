@@ -9,7 +9,7 @@ local config = {
   -- Configure AstroNvim updates
   updater = {
     remote = "origin", -- remote to use
-    channel = "nightly", -- "stable" or "nightly"
+    channel = "stable", -- "stable" or "nightly"
     version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
     branch = "main", -- branch name (NIGHTLY ONLY)
     commit = nil, -- commit hash (NIGHTLY ONLY)
@@ -26,7 +26,7 @@ local config = {
   },
 
   -- Set colorscheme to use
-  colorscheme = "one",
+  colorscheme = "nordfox",
 
   -- Add highlight groups in any theme
   highlights = {
@@ -42,7 +42,8 @@ local config = {
   options = {
     opt = {
       -- set to true or false etc.
-      relativenumber = true, -- sets vim.opt.relativenumber
+      colorcolumn = '120',
+      relativenumber = false, -- sets vim.opt.relativenumber
       number = true, -- sets vim.opt.number
       spell = false, -- sets vim.opt.spell
       signcolumn = "auto", -- sets vim.opt.signcolumn to auto
@@ -205,8 +206,8 @@ local config = {
       ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
       ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
-      ["<leader>e"] = { "<cmd>NvimTreeToggle<cr>", desc = "NvimTree Toggle" },
-      ["<leader>o"] = { "<cmd>NvimTreeFocus<cr>", desc = "NvimTree Focus" },
+      ["<leader>e"] = { "<cmd>NvimTreeFindFileToggle<cr>", desc = "NvimTree Toggle" },
+      ["<leader>o"] = { "<cmd>NvimTreeToggle<cr>", desc = "NvimTree Focus" },
       ["<leader>y"] = { '"+y', desc = "Copy to system buffer" },
       ["<leader>P"] = { '"+p', desc = "Paste from system buffer" },
       -- quick save
@@ -239,6 +240,7 @@ local config = {
     init = {
       -- You can disable default plugins as follows:
       -- ["goolord/alpha-nvim"] = { disable = true },
+      "EdenEast/nightfox.nvim",
       "morhetz/gruvbox",
       "rakr/vim-one",
       "nvim-tree/nvim-tree.lua",
