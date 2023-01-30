@@ -26,7 +26,7 @@ local config = {
   },
 
   -- Set colorscheme to use
-  colorscheme = "nordfox",
+  colorscheme = "nord",
 
   -- Add highlight groups in any theme
   highlights = {
@@ -42,7 +42,7 @@ local config = {
   options = {
     opt = {
       -- set to true or false etc.
-      colorcolumn = '120',
+      colorcolumn = '79',
       relativenumber = false, -- sets vim.opt.relativenumber
       number = true, -- sets vim.opt.number
       spell = false, -- sets vim.opt.spell
@@ -206,10 +206,6 @@ local config = {
       ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
       ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
-      ["<leader>e"] = { "<cmd>NvimTreeFindFileToggle<cr>", desc = "NvimTree Toggle" },
-      ["<leader>o"] = { "<cmd>NvimTreeToggle<cr>", desc = "NvimTree Focus" },
-      ["<leader>y"] = { '"+y', desc = "Copy to system buffer" },
-      ["<leader>P"] = { '"+p', desc = "Paste from system buffer" },
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     },
@@ -218,28 +214,13 @@ local config = {
       -- ["<esc>"] = false,
     },
   },
-  require("nvim-tree").setup({
-    sort_by = "case_sensitive",
-    view = {
-      adaptive_size = true,
-      mappings = {
-        list = {
-          { key = "u", action = "dir_up" },
-        },
-      },
-    },
-    renderer = {
-      group_empty = true,
-    },
-    filters = {
-      dotfiles = true,
-    },
-  }),
+
   -- Configure plugins
   plugins = {
     init = {
       -- You can disable default plugins as follows:
       -- ["goolord/alpha-nvim"] = { disable = true },
+      "arcticicestudio/nord-vim",
       "EdenEast/nightfox.nvim",
       "morhetz/gruvbox",
       "rakr/vim-one",
@@ -247,8 +228,6 @@ local config = {
       "tpope/vim-surround", -- Оборачивине в кавычки
       "tpope/vim-repeat", -- может повторять оборачивание
       "powerman/vim-plugin-ruscmd", -- Русская раскладка
-      ["nvim-neo-tree/neo-tree.nvim"] = { disable = true },
-
       -- You can also add new plugins here as well:
       -- Add plugins, the packer syntax without the "use"
       -- { "andweeb/presence.nvim" },
