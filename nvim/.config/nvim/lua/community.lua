@@ -10,6 +10,5 @@ return {
 	{ import = "astrocommunity.pack.lua" },
 	{ import = "astrocommunity.pack.elixir-phoenix" },
 	{ import = "astrocommunity.colorscheme.everforest" },
-	-- { import = "astrocommunity.motion.leap-nvim" },
 	-- import/override with your plugins folder
 }

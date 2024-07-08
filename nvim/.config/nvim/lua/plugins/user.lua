@@ -23,20 +23,6 @@ return {
 			vim.api.nvim_set_hl(0, "LeapBackdrop", { link = "Comment" })
 		end,
 	},
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		config = function()
-			require("neo-tree").setup({
-				window = {
-					width = 30,
-					mappings = {
-						["l"] = "open",
-					},
-				},
-			})
-		end,
-	},
-
 	-- == Examples of Overriding Plugins ==
 
 	-- customize alpha options
