@@ -13,7 +13,7 @@ return {
             window = {
                 width = 30,
                 mappings = {
-                    ["l"] = "open",
+                    ["o"] = "open",
                 }
             }
         })

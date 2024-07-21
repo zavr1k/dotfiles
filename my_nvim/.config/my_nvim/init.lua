@@ -4,9 +4,12 @@ vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.cmd("set shiftwidth=4")
+vim.cmd("set cmdheight=0")
 vim.g.mapleader = " "
 vim.opt.swapfile = false
 
+vim.keymap.set("n", "H", ":bprevious<cr>")
+vim.keymap.set("n", "L", ":bnext<cr>")
 vim.keymap.set("n", "<c-k>", ":wincmd k<cr>")
 vim.keymap.set("n", "<c-j>", ":wincmd j<cr>")
 vim.keymap.set("n", "<c-h>", ":wincmd h<cr>")
@@ -34,6 +37,7 @@ require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
 	},
-	install = { colorscheme = { "habamax" } },
-	-- checker = { enabled = true },
+    checker = {
+        enabled = false,
+    }
 })

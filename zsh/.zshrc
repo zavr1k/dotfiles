@@ -113,9 +113,10 @@ alias v="nvim"
 alias vv="NVIM_APPNAME=my_nvim nvim"
 # alias av="NVIM_APPNAME=astronvim_v4 nvim"
 alias cat="bat"
+alias cl="clear"
 alias "git ci"="git commit"
 alias "git st"="git status"
-alias fn='nvim $(fzf --preview="bat --color=always {}")'
+alias ll="eza --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -126,4 +127,24 @@ if [ -f '/home/anton/yandex-cloud/path.bash.inc' ]; then source '/home/anton/yan
 
 # The next line enables shell command completion for yc.
 if [ -f '/home/anton/yandex-cloud/completion.zsh.inc' ]; then source '/home/anton/yandex-cloud/completion.zsh.inc'; fi
+source <(fzf --zsh)
+
+export FZF_DEFAULT_COMMAND='fd --hidden --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo ${}'"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+  esac
+}
 

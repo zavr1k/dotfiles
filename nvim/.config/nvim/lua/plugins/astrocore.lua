@@ -31,6 +31,7 @@ return {
 				signcolumn = "yes", -- sets vim.opt.signcolumn to yes
 				wrap = false, -- sets vim.opt.wrap
 				colorcolumn = "90",
+				scrolloff = 10, -- set min number of lines above and below cursor
 			},
 			g = { -- vim.g.<key>
 				-- configure global vim variables (vim.g)
