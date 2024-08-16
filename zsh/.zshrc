@@ -118,6 +118,10 @@ alias "git ci"="git commit"
 alias "git st"="git status"
 alias ll="eza --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 fpath+=~/.zfunc
