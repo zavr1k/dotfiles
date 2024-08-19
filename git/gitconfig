@@ -1,0 +1,14 @@
+[user]
+	email = s.anton@live.ru
+	name = Anton Semenov
+[alias]
+	co = checkout
+	st = status
+	ci = commit
+	br = branch
+	lol = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[core]
+	editor = nvim
+	excludesfile = /home/anton/.gitexcludes
+[init]
+	defaultBranch = main
