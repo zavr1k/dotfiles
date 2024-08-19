@@ -9,7 +9,7 @@ normal.family = "MesloLGM Nerd Font Mono"
 padding.x = 5
 padding.y = 5
 
-opacity = 0.85
+opacity = 0.8
 blur = true
 
 decorations = "Buttonless"
