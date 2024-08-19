@@ -2,12 +2,15 @@
 TERM = "xterm-256color"
 
 [font]
-size = 13.0
+size = 15.0
+normal.family = "MesloLGM Nerd Font Mono"
 
 [window]
-opacity = 0.85
-decorations = "None"
+padding.x = 5
+padding.y = 5
 
-[window.dimensions]
-columns = 220
-lines = 60
+opacity = 0.85
+blur = true
+
+decorations = "Buttonless"
+startup_mode = "Maximized"
