@@ -1,0 +1,12 @@
+theme = zenwritten_dark
+term = xterm-256color
+macos-titlebar-style = hidden
+keybind = global:cmd+shift+space=toggle_quick_terminal
+font-size = 15
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+background-opacity = 0.85
+background-blur = true
+window-width = 99999
+window-height = 99999
