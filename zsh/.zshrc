@@ -6,16 +6,20 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-#
+export PATH=$HOME/go/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-export PATH=$PATH:/home/anton/.asdf/installs/golang/1.21.3/packages/bin
+# Autocomplition for edgedb
+fpath+=~/.zfunc
 
-# Path to your oh-my-zsh installation.
+# zsh completion
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+
+# Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export GOBIN="$HOME/go/bin"
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
+# load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -72,15 +76,38 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
+# History
+HISTSIZE=50000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+
+
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-
+#
+# export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git asdf)
+plugins=(
+  git
+  pass
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  zsh-completions
+  docker
+  kubectl
+  docker-compose
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,46 +126,38 @@ source $ZSH/oh-my-zsh.sh
 # fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# export ARCHFLAGS="-arch $(uname -m)"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# Keybindings
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias v="nvim"
-alias vv="NVIM_APPNAME=my_nvim nvim"
-# alias av="NVIM_APPNAME=astronvim_v4 nvim"
-alias cat="bat"
-alias cl="clear"
-alias "git ci"="git commit"
-alias "git st"="git status"
-alias ll="eza --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
-
-
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+alias k="kubectl"
+alias marta="marta --existing-tab"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-fpath+=~/.zfunc
 
-# The next line updates PATH for Yandex Cloud CLI.
-if [ -f '/home/anton/yandex-cloud/path.bash.inc' ]; then source '/home/anton/yandex-cloud/path.bash.inc'; fi
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# The next line enables shell command completion for yc.
-if [ -f '/home/anton/yandex-cloud/completion.zsh.inc' ]; then source '/home/anton/yandex-cloud/completion.zsh.inc'; fi
+# fzf settings
 source <(fzf --zsh)
-
 export FZF_DEFAULT_COMMAND='fd --hidden --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
-
 show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 _fzf_comprun() {
   local command=$1
@@ -152,3 +171,11 @@ _fzf_comprun() {
   esac
 }
 
+export SSH_AUTH_SOCK=/Users/santon/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock
+
+# opencode
+export PATH=/Users/santon/.opencode/bin:$PATH
+
+eval "$(mise activate zsh)"
+eval "$(mise completion zsh)"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
