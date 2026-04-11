@@ -1,4 +1,4 @@
-theme = zenwritten_dark
+theme = Zenwritten Dark
 term = xterm-256color
 macos-titlebar-style = hidden
 keybind = global:cmd+shift+space=toggle_quick_terminal
