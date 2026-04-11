@@ -48,21 +48,29 @@ local current_quote = quotes[math.random(1, #quotes)]
 
 -- Rotate quote every 30 seconds
 local quote_timer = vim.uv.new_timer()
-quote_timer:start(30000, 30000, vim.schedule_wrap(function()
-  current_quote = quotes[math.random(1, #quotes)]
-end))
+quote_timer:start(
+  30000,
+  30000,
+  vim.schedule_wrap(function()
+    current_quote = quotes[math.random(1, #quotes)]
+  end)
+)
 
 return {
   {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
-      if not opts.sections then return end
+      if not opts.sections then
+        return
+      end
 
       table.insert(opts.sections.lualine_x, 1, {
         function()
           return current_quote
         end,
-        cond = function() return vim.g.colors_name == "hackerman" end,
+        cond = function()
+          return vim.g.colors_name == "hackerman"
+        end,
         color = { fg = "#526e58", italic = true },
       })
     end,
