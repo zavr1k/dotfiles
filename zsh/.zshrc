@@ -144,6 +144,8 @@ bindkey '^n' history-search-forward
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias v="nvim"
+alias vim="nvim"
+alias y="yazi"
 alias k="kubectl"
 alias marta="marta --existing-tab"
 
@@ -179,3 +181,5 @@ export PATH=/Users/santon/.opencode/bin:$PATH
 eval "$(mise activate zsh)"
 eval "$(mise completion zsh)"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+eval "$(zoxide init --cmd cd zsh)"
