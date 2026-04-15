@@ -145,7 +145,6 @@ bindkey '^n' history-search-forward
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias v="nvim"
 alias vim="nvim"
-alias y="yazi"
 alias k="kubectl"
 alias marta="marta --existing-tab"
 
