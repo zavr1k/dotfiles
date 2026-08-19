@@ -281,6 +281,10 @@ hi("GitSignsAdd", { fg = c.green_dim })
 hi("GitSignsChange", { fg = c.blue })
 hi("GitSignsDelete", { fg = c.red_dim })
 
+-- Snacks Picker / Explorer git status (untracked defaults to NonText,
+-- which is nearly invisible on this bg; give it its own readable color)
+hi("SnacksPickerGitStatusUntracked", { fg = c.purple })
+
 -- Telescope
 hi("TelescopeNormal", { fg = c.fg, bg = c.bg_float })
 hi("TelescopeBorder", { fg = c.border, bg = c.bg_float })
@@ -307,7 +311,7 @@ hi("NeoTreeGitAdded", { fg = c.green_dim })
 hi("NeoTreeGitModified", { fg = c.blue })
 hi("NeoTreeGitDeleted", { fg = c.red_dim })
 hi("NeoTreeGitConflict", { fg = c.yellow })
-hi("NeoTreeGitUntracked", { fg = c.green_muted })
+hi("NeoTreeGitUntracked", { fg = c.purple })
 hi("NeoTreeRootName", { fg = c.green, bold = true })
 hi("NeoTreeIndentMarker", { fg = c.nontext })
 

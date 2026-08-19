@@ -1,5 +1,5 @@
 -- Hackerman FX: boot animation, dashboard, diagnostics icons,
--- decryption effect, glitch on save, intrusion detected, exit effect
+-- decryption effect, glitch on save
 -- Only activates when colorscheme is "hackerman"
 
 return {
@@ -84,11 +84,6 @@ return {
         vim.api.nvim_set_hl(0, "HackermanDecrypt1", { fg = "#28884a", bg = "#0b1210" })
         -- Glitch on save
         vim.api.nvim_set_hl(0, "HackermanGlitch", { fg = "#58c878", bg = "#0b1210", bold = true })
-        -- Intrusion alert
-        vim.api.nvim_set_hl(0, "HackermanIntrusion", { bg = "#1c0e0e" })
-        vim.api.nvim_set_hl(0, "HackermanIntrusionTitle", { fg = "#e05050", bg = "#1c0e0e", bold = true })
-        vim.api.nvim_set_hl(0, "HackermanIntrusionText", { fg = "#c04040", bg = "#1c0e0e" })
-        vim.api.nvim_set_hl(0, "HackermanIntrusionBorder", { fg = "#802020", bg = "#1c0e0e" })
       end
 
       setup_highlights()
@@ -302,106 +297,6 @@ return {
           )
         end,
       })
-
-      -- ════════════════════════════════════════════════════
-      -- ██  INTRUSION DETECTED (first LSP error per buffer)
-      -- ════════════════════════════════════════════════════
-
-      local intrusion_shown = {}
-
-      vim.api.nvim_create_autocmd("DiagnosticChanged", {
-        callback = function(args)
-          if not is_hackerman() then
-            return
-          end
-          local buf = args.buf
-          if not buf or intrusion_shown[buf] then
-            return
-          end
-          if not is_code_buf(buf) then
-            return
-          end
-
-          local errors = vim.diagnostic.get(buf, { severity = vim.diagnostic.severity.ERROR })
-          if #errors == 0 then
-            return
-          end
-
-          intrusion_shown[buf] = true
-
-          local source = errors[1].source or "unknown"
-          local msg_lines = {
-            "                                        ",
-            "   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ",
-            "   █                                █   ",
-            "   █   ⚠  INTRUSION DETECTED  ⚠     █   ",
-            "   █                                █   ",
-            "   █   unauthorized code detected   █   ",
-            "   █   source: " .. source .. string.rep(" ", math.max(0, 19 - #source)) .. "  █   ",
-            "   █   threat: critical             █   ",
-            "   █                                █   ",
-            "   ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀   ",
-            "                                        ",
-          }
-
-          local float_buf = vim.api.nvim_create_buf(false, true)
-          vim.api.nvim_buf_set_lines(float_buf, 0, -1, false, msg_lines)
-
-          local hl_ns = vim.api.nvim_create_namespace("hackerman_intrusion_hl")
-          for i = 0, #msg_lines - 1 do
-            local hl = "HackermanIntrusion"
-            if i == 3 then
-              hl = "HackermanIntrusionTitle"
-            end
-            if i >= 5 and i <= 7 then
-              hl = "HackermanIntrusionText"
-            end
-            if i == 1 or i == 9 then
-              hl = "HackermanIntrusionBorder"
-            end
-            vim.api.nvim_buf_set_extmark(float_buf, hl_ns, i, 0, {
-              line_hl_group = hl,
-              end_row = i + 1,
-            })
-          end
-
-          local width = 40
-          local height = #msg_lines
-          local float_win = vim.api.nvim_open_win(float_buf, false, {
-            relative = "editor",
-            width = width,
-            height = height,
-            col = math.floor((vim.o.columns - width) / 2),
-            row = math.floor((vim.o.lines - height) / 2),
-            style = "minimal",
-            border = "none",
-            zindex = 200,
-          })
-          vim.api.nvim_set_option_value("winhl", "Normal:HackermanIntrusion", { win = float_win })
-
-          vim.defer_fn(function()
-            if vim.api.nvim_win_is_valid(float_win) then
-              vim.api.nvim_set_option_value("winblend", 10, { win = float_win })
-            end
-          end, 300)
-
-          vim.defer_fn(function()
-            if vim.api.nvim_win_is_valid(float_win) then
-              vim.api.nvim_win_close(float_win, true)
-            end
-            if vim.api.nvim_buf_is_valid(float_buf) then
-              vim.api.nvim_buf_delete(float_buf, { force = true })
-            end
-          end, 2000)
-        end,
-      })
-
-      vim.api.nvim_create_autocmd("BufWipeout", {
-        callback = function(args)
-          intrusion_shown[args.buf] = nil
-        end,
-      })
-
     end,
   },
 }
