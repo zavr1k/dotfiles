@@ -1,15 +1,12 @@
-theme = Zenwritten Dark
-term = xterm-256color
-macos-titlebar-style = hidden
-keybind = global:cmd+shift+space=toggle_quick_terminal
-font-size = 15
-cursor-style = block
-cursor-style-blink = false
-shell-integration-features = no-cursor
-background-opacity = 1
+macos-titlebar-style = tabs
+font-size = 14
+
 background-blur = false
 background-image = /Users/santon/dotfiles/ghostty/.config/ghostty/anon.jpg
 background-image-fit = cover
 background-image-opacity = 0.3
-window-width = 99999
-window-height = 99999
+
+cursor-style = block
+cursor-style-blink = false
+
+keybind = global:cmd+shift+space=toggle_quick_terminal
