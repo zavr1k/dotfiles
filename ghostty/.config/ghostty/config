@@ -1,12 +1,13 @@
 macos-titlebar-style = tabs
 font-size = 14
 
-background-blur = false
-background-image = /Users/santon/dotfiles/ghostty/.config/ghostty/anon.jpg
-background-image-fit = cover
-background-image-opacity = 0.3
-
 cursor-style = block
 cursor-style-blink = false
 
 keybind = global:cmd+shift+space=toggle_quick_terminal
+
+# shift+enter -> newline in Claude Code (sends the same ESC+CR as option+enter)
+keybind = shift+enter=text:\x1b\r
+
+# поддержка терминала при подключении по ssh
+shell-integration-features = ssh-env,ssh-terminfo

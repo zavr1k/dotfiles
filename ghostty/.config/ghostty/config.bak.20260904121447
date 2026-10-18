@@ -1,0 +1,7 @@
+macos-titlebar-style = tabs
+font-size = 14
+
+cursor-style = block
+cursor-style-blink = false
+
+keybind = global:cmd+shift+space=toggle_quick_terminal
