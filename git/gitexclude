@@ -1,5 +1,10 @@
 .tool-versions
+mise.toml
+mise.lock
+.claude/
 .env
 .venv/
 pyrightconfig.json
 __pycache__/
+data/
+*.rdb

@@ -1,0 +1,36 @@
+[tools]
+claude-code = "latest"
+elixir = "latest"
+erlang = "latest"
+go = "latest"
+herdr = "latest"
+node = "latest"
+"npm:typescript" = "latest"
+poetry = "latest"
+python = "latest"
+rust = "latest"
+
+[settings]
+experimental = true
+python.uv_venv_auto = true
+idiomatic_version_file_enable_tools = ["python", "node", "elixir"]
+dotfiles.root = "~/dotfiles"
+dotfiles.relative_symlinks = true
+
+[env]
+
+# Пакеты, которые stow раскладывал по файлам
+[dotfile_groups.zsh]
+root = "zsh"
+
+# Пакеты, которые stow линковал директорией целиком
+[dotfiles]
+"~/.config/nvim" = { source = "~/dotfiles/nvim/.config/nvim", mode = "symlink" }
+"~/.config/tmux" = { source = "~/dotfiles/tmux/.config/tmux", mode = "symlink" }
+"~/.config/ghostty" = { source = "~/dotfiles/ghostty/.config/ghostty", mode = "symlink" }
+"~/.config/karabiner" = { source = "~/dotfiles/karabiner/.config/karabiner", mode = "symlink" }
+
+# Отдельные файлы
+"~/.config/mise/config.toml" = { source = "~/dotfiles/mise/.config/mise/config.toml", mode = "symlink" }
+"~/.gitconfig" = { source = "~/dotfiles/git/gitconfig", mode = "symlink" }
+"~/.gitexcludes" = { source = "~/dotfiles/git/gitexclude", mode = "symlink" }
