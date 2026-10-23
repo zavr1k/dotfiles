@@ -7,7 +7,7 @@ Deployed with [mise dotfiles](https://mise.jdx.dev/dotfiles.html). The
 
 ```sh
 brew install mise
-git clone <repo> ~/dotfiles
+git clone git@github.com:zavr1k/dotfiles.git ~/dotfiles
 mkdir -p ~/.config/mise
 ln -s ../../dotfiles/mise/.config/mise/config.toml ~/.config/mise/config.toml
 mise dot diff    # review what will change
