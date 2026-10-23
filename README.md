@@ -9,7 +9,7 @@ Deployed with [mise dotfiles](https://mise.jdx.dev/dotfiles.html). The
 brew install mise
 git clone git@github.com:zavr1k/dotfiles.git ~/dotfiles
 mkdir -p ~/.config/mise
-ln -s ../../dotfiles/mise/.config/mise/config.toml ~/.config/mise/config.toml
+ln -s ~/dotfiles/mise/.config/mise/config.toml ~/.config/mise/config.toml
 mise dot diff    # review what will change
 mise dot apply   # add --force to replace existing real files
 ```
