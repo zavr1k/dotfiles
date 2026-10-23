@@ -1,0 +1,4 @@
+karabiner/.config/karabiner/automatic_backups/
+*.bak
+*.bak.*
+nvim/.config/nvim/session-*.md

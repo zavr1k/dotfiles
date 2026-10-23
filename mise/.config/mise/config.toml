@@ -16,6 +16,8 @@ python.uv_venv_auto = true
 idiomatic_version_file_enable_tools = ["python", "node", "elixir"]
 dotfiles.root = "~/dotfiles"
 dotfiles.relative_symlinks = true
+# История дотфайлов ведётся в git, встроенная история mise не нужна
+history.enabled = false
 
 [env]
 
