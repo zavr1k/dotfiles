@@ -1,14 +1,11 @@
 [tools]
 claude-code = "latest"
-elixir = "latest"
-erlang = "latest"
 go = "latest"
-herdr = "latest"
+helm = "latest"
 node = "latest"
 "npm:typescript" = "latest"
 poetry = "latest"
 python = "latest"
-rust = "latest"
 
 [settings]
 experimental = true
@@ -36,3 +33,52 @@ root = "zsh"
 "~/.config/mise/config.toml" = { source = "~/dotfiles/mise/.config/mise/config.toml", mode = "symlink" }
 "~/.gitconfig" = { source = "~/dotfiles/git/gitconfig", mode = "symlink" }
 "~/.gitexcludes" = { source = "~/dotfiles/git/gitexclude", mode = "symlink" }
+
+[bootstrap.packages]
+# CLI
+"brew:bat" = "latest"
+"brew:curl" = "latest"
+"brew:eza" = "latest"
+"brew:fd" = "latest"
+"brew:fzf" = "latest"
+"brew:jq" = "latest"
+"brew:ripgrep" = "latest"
+"brew:wget" = "latest"
+"brew:zoxide" = "latest"
+# Shell и редактор
+"brew:gh" = "latest"
+"brew:git" = "latest"
+"brew:glab" = "latest"
+"brew:gnupg" = "latest"
+"brew:lazygit" = "latest"
+"brew:neovim" = "latest"
+# Разработка
+"brew:ansible" = "latest"
+"brew:golang-migrate" = "latest"
+"brew:gopls" = "latest"
+"brew:opencode" = "latest"
+"brew:pandoc" = "latest"
+"brew:typst" = "latest"
+"brew:uv" = "latest"
+# Прочее
+"brew:ffmpeg" = "latest"
+"brew:immich-go" = "latest"
+"brew:yt-dlp" = "latest"
+# Приложения
+"brew-cask:appcleaner" = "latest"
+"brew-cask:caffeine" = "latest"
+"brew-cask:codex" = "latest"
+"brew-cask:dbeaver-community" = "latest"
+"brew-cask:font-meslo-lg-nerd-font" = "latest"
+"brew-cask:ghostty" = "latest"
+"brew-cask:google-drive" = "latest"
+"brew-cask:karabiner-elements" = "latest"
+"brew-cask:leader-key" = "latest"
+"brew-cask:marta" = "latest"
+"brew-cask:nextcloud" = "latest"
+"brew-cask:obsidian" = "latest"
+"brew-cask:orbstack" = "latest"
+"brew-cask:postman" = "latest"
+"brew-cask:raycast" = "latest"
+"brew-cask:sublime-text" = "latest"
+"brew-cask:utm" = "latest"
