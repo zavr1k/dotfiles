@@ -36,6 +36,9 @@ root = "zsh"
 "~/.gitconfig" = { source = "~/dotfiles/git/gitconfig", mode = "symlink" }
 "~/.gitexcludes" = { source = "~/dotfiles/git/gitexclude", mode = "symlink" }
 
+# CLI-запускалка Marta, ставится в ~/.local/bin без sudo
+"~/.local/bin/marta" = { source = "/Applications/Marta.app/Contents/Resources/launcher", mode = "symlink", relative = false }
+
 # oh-my-zsh, тема и плагины; ZSH_CUSTOM задан в .zshrc
 [bootstrap.repos]
 "~/.oh-my-zsh" = { url = "https://github.com/ohmyzsh/ohmyzsh.git" }
@@ -95,3 +98,12 @@ root = "zsh"
 # App Store: mas должен стоять до Bitwarden; в App Store войти вручную
 "brew:mas" = "latest"
 "mas:1352778147" = "latest" # Bitwarden
+
+[tasks.up]
+description = "Обновить brew-пакеты, инструменты mise, oh-my-zsh и плагины"
+run = [
+  "brew update",
+  "brew upgrade",
+  "mise upgrade",
+  "mise bootstrap repos update",
+]
