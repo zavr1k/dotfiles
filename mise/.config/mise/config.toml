@@ -25,7 +25,8 @@ root = "zsh"
 # Пакеты, которые stow линковал директорией целиком
 [dotfiles]
 "~/.config/nvim" = { source = "~/dotfiles/nvim/.config/nvim", mode = "symlink" }
-"~/.config/tmux" = { source = "~/dotfiles/tmux/.config/tmux", mode = "symlink" }
+# tmux не используется, конфиг оставлен в репо: раскомментировать, чтобы вернуть
+# "~/.config/tmux" = { source = "~/dotfiles/tmux/.config/tmux", mode = "symlink" }
 "~/.config/ghostty" = { source = "~/dotfiles/ghostty/.config/ghostty", mode = "symlink" }
 "~/.config/karabiner" = { source = "~/dotfiles/karabiner/.config/karabiner", mode = "symlink" }
 
@@ -33,6 +34,14 @@ root = "zsh"
 "~/.config/mise/config.toml" = { source = "~/dotfiles/mise/.config/mise/config.toml", mode = "symlink" }
 "~/.gitconfig" = { source = "~/dotfiles/git/gitconfig", mode = "symlink" }
 "~/.gitexcludes" = { source = "~/dotfiles/git/gitexclude", mode = "symlink" }
+
+# oh-my-zsh, тема и плагины; ZSH_CUSTOM задан в .zshrc
+[bootstrap.repos]
+"~/.oh-my-zsh" = { url = "https://github.com/ohmyzsh/ohmyzsh.git" }
+"~/.zsh-custom/themes/powerlevel10k" = { url = "https://github.com/romkatv/powerlevel10k.git", depth = 1 }
+"~/.zsh-custom/plugins/zsh-autosuggestions" = { url = "https://github.com/zsh-users/zsh-autosuggestions.git" }
+"~/.zsh-custom/plugins/zsh-syntax-highlighting" = { url = "https://github.com/zsh-users/zsh-syntax-highlighting.git" }
+"~/.zsh-custom/plugins/zsh-completions" = { url = "https://github.com/zsh-users/zsh-completions.git" }
 
 [bootstrap.packages]
 # CLI

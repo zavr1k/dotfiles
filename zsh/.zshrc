@@ -11,12 +11,14 @@ export PATH=$HOME/go/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 # Autocomplition for edgedb
 fpath+=~/.zfunc
 
-# zsh completion
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+# Themes and plugins live outside $ZSH, cloned by `mise bootstrap`
+export ZSH_CUSTOM="$HOME/.zsh-custom"
 export GOBIN="$HOME/go/bin"
+
+# zsh completion
+fpath+=$ZSH_CUSTOM/plugins/zsh-completions/src
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -100,7 +102,6 @@ setopt hist_ignore_dups
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  pass
   zsh-autosuggestions
   zsh-syntax-highlighting
   zsh-completions
