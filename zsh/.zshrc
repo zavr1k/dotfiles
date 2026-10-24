@@ -175,9 +175,6 @@ _fzf_comprun() {
 
 export SSH_AUTH_SOCK=/Users/santon/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock
 
-# opencode
-export PATH=/Users/santon/.opencode/bin:$PATH
-
 eval "$(mise activate zsh)"
 eval "$(mise completion zsh)"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
