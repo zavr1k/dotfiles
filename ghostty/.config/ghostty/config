@@ -1,4 +1,5 @@
-macos-titlebar-style = native
+# macos-titlebar-style = native
+macos-titlebar-style = tabs
 font-size = 14
 
 cursor-style = block
