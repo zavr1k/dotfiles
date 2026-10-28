@@ -80,6 +80,5 @@ export SSH_AUTH_SOCK=$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwar
 
 eval "$(mise activate zsh)"
 eval "$(mise completion zsh)"
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 eval "$(zoxide init --cmd cd zsh)"
